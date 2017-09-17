@@ -1,6 +1,6 @@
 package schemely.lexer;
 
-import org.testng.annotations.DataProvider;
+//import org.testng.annotations.DataProvider;
 import schemely.TestUtil;
 
 import static schemely.lexer.Tokens.*;
@@ -10,7 +10,7 @@ import static schemely.lexer.Tokens.*;
  */
 public class LexerTest extends LexerTestBase
 {
-  @DataProvider(name = "lexerTests")
+//  @DataProvider(name = "lexerTests")
   private static Object[][] lexerTestCases()
   {
     return TestUtil.testArray(testCase("(", LEFT_PAREN),

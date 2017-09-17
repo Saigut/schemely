@@ -1,6 +1,6 @@
 package schemely.parser;
 
-import org.testng.annotations.DataProvider;
+//import org.testng.annotations.DataProvider;
 import schemely.TestUtil;
 import schemely.psi.impl.SchemeQuoted;
 import schemely.psi.impl.SchemeVector;
@@ -8,7 +8,7 @@ import schemely.psi.impl.SchemeVector;
 
 public class ParserTest extends ParseTestCaseBase
 {
-  @DataProvider(name = "parseFiles")
+//  @DataProvider(name = "parseFiles")
   private Object[][] getParseFiles()
   {
     setUp();

@@ -2,8 +2,8 @@ package schemely.compiler;
 
 import com.intellij.compiler.CompilerException;
 import com.intellij.compiler.impl.javaCompiler.BackendCompiler;
-import com.intellij.compiler.impl.javaCompiler.BackendCompilerWrapper;
-import com.intellij.compiler.make.CacheCorruptedException;
+//import com.intellij.compiler.impl.javaCompiler.BackendCompilerWrapper;
+//import com.intellij.compiler.make.CacheCorruptedException;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.compiler.CompileContext;
 import com.intellij.openapi.compiler.CompileScope;
@@ -62,29 +62,29 @@ public class SchemeCompiler implements TranslatingCompiler
                       VirtualFile[] virtualFiles,
                       OutputSink outputSink)
   {
-    BackendCompiler backEndCompiler = getBackEndCompiler();
-    BackendCompilerWrapper
-      wrapper =
-      new BackendCompilerWrapper(moduleChunk, project,
-                                 Arrays.asList(virtualFiles),
-                                 (CompileContextEx) compileContext,
-                                 backEndCompiler,
-                                 outputSink);
-
-    // Compile Scheme classes
-    try
-    {
-      wrapper.compile();
-    }
-    catch (CompilerException e)
-    {
-      compileContext.addMessage(CompilerMessageCategory.ERROR, e.getMessage(), null, -1, -1);
-    }
-    catch (CacheCorruptedException e)
-    {
-      log.info(e);
-      compileContext.requestRebuildNextTime(e.getMessage());
-    }
+//    BackendCompiler backEndCompiler = getBackEndCompiler();
+//    BackendCompilerWrapper
+//      wrapper =
+//      new BackendCompilerWrapper(moduleChunk, project,
+//                                 Arrays.asList(virtualFiles),
+//                                 (CompileContextEx) compileContext,
+//                                 backEndCompiler,
+//                                 outputSink);
+//
+//    // Compile Scheme classes
+//    try
+//    {
+//      wrapper.compile();
+//    }
+//    catch (CompilerException e)
+//    {
+//      compileContext.addMessage(CompilerMessageCategory.ERROR, e.getMessage(), null, -1, -1);
+//    }
+//    catch (CacheCorruptedException e)
+//    {
+//      log.info(e);
+//      compileContext.requestRebuildNextTime(e.getMessage());
+//    }
   }
 
   @NotNull
@@ -96,11 +96,12 @@ public class SchemeCompiler implements TranslatingCompiler
 
   public boolean validateConfiguration(CompileScope scope)
   {
-    return getBackEndCompiler().checkCompiler(scope);
+//    return getBackEndCompiler().checkCompiler(scope);
+    return false;
   }
 
-  private BackendCompiler getBackEndCompiler()
-  {
-    return new SchemeBackendCompiler(project);
-  }
+//  private BackendCompiler getBackEndCompiler()
+//  {
+//    return new SchemeBackendCompiler(project);
+//  }
 }

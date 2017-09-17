@@ -155,7 +155,8 @@ public class SchemeIdentifier extends SchemePsiElementBase implements PsiReferen
 
   public PsiElement resolve()
   {
-    return getManager().getResolveCache().resolveWithCaching(this, RESOLVER, false, false);
+//    return getManager().getResolveCache().resolveWithCaching(this, RESOLVER, false, false);
+    return null;
   }
 
   public static String id(Object object)

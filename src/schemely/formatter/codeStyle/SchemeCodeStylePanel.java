@@ -60,7 +60,7 @@ public class SchemeCodeStylePanel extends CodeStyleAbstractPanel
   {
     SchemeCodeStyleSettings scmSettings = settings.getCustomSettings(SchemeCodeStyleSettings.class);
     scmSettings.defineForms = defineFormsTextArea.getText();
-    updatePreview();
+    updatePreview(true);
   }
 
   public boolean isModified(CodeStyleSettings settings)
@@ -78,7 +78,7 @@ public class SchemeCodeStylePanel extends CodeStyleAbstractPanel
   {
     SchemeCodeStyleSettings scmSettings = settings.getCustomSettings(SchemeCodeStyleSettings.class);
     setSettings(scmSettings);
-    updatePreview();
+    updatePreview(true);
   }
 
   private void setSettings(SchemeCodeStyleSettings settings)

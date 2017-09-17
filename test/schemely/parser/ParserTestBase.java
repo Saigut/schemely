@@ -15,7 +15,7 @@ import com.intellij.testFramework.fixtures.IdeaProjectTestFixture;
 import com.intellij.testFramework.fixtures.IdeaTestFixtureFactory;
 import com.intellij.testFramework.fixtures.TestFixtureBuilder;
 import com.intellij.util.IncorrectOperationException;
-import org.testng.annotations.AfterTest;
+//import org.testng.annotations.AfterTest;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -56,7 +56,7 @@ public class ParserTestBase
     return fixtureBuilder.getFixture();
   }
 
-  @AfterTest
+//  @AfterTest
   protected void tearDown()
   {
     try

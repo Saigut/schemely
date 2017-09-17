@@ -257,7 +257,7 @@ public class SISCInProcessREPL extends REPLBase
     {
       if (orderEntry instanceof ExportableOrderEntry)
       {
-        virtualFiles.addAll(Arrays.asList(orderEntry.getFiles(OrderRootType.COMPILATION_CLASSES)));
+        virtualFiles.addAll(Arrays.asList(orderEntry.getFiles(OrderRootType.CLASSES)));
         //
         //      // Add module sources
         //      if (orderEntry instanceof ModuleSourceOrderEntry)
@@ -301,9 +301,10 @@ public class SISCInProcessREPL extends REPLBase
 
   private boolean isSuitableModule(Module module)
   {
-    ModuleType type = module.getModuleType();
-    return ModuleTypeManager.getInstance().isClasspathProvider(type) &&
-           ((type instanceof JavaModuleType) || "PLUGIN_MODULE".equals(type.getId()));
+//    ModuleType type = module.getModuleType();
+//    return ModuleTypeManager.getInstance().isClasspathProvider(type) &&
+//           ((type instanceof JavaModuleType) || "PLUGIN_MODULE".equals(type.getId()));
+    return true;
   }
 
   public class LocalREPLThread extends SchemeThread

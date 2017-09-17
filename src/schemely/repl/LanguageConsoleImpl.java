@@ -258,14 +258,14 @@ public class LanguageConsoleImpl implements Disposable, TypeSafeDataProvider
   {
     text = StringUtil.convertLineSeparators(text);
     Document history = myHistoryViewer.getDocument();
-    MarkupModel markupModel = history.getMarkupModel(myProject);
+//    MarkupModel markupModel = history.getMarkupModel(myProject);
     int offset = history.getTextLength();
     appendToHistoryDocument(history, text);
-    markupModel.addRangeHighlighter(offset,
-                                    history.getTextLength(),
-                                    HighlighterLayer.SYNTAX,
-                                    attributes,
-                                    HighlighterTargetArea.EXACT_RANGE);
+//    markupModel.addRangeHighlighter(offset,
+//                                    history.getTextLength(),
+//                                    HighlighterLayer.SYNTAX,
+//                                    attributes,
+//                                    HighlighterTargetArea.EXACT_RANGE);
   }
 
   protected void appendToHistoryDocument(@NotNull Document history, @NotNull String text)
@@ -301,10 +301,10 @@ public class LanguageConsoleImpl implements Disposable, TypeSafeDataProvider
       sink.put(OpenFileDescriptor.NAVIGATE_IN_EDITOR, myConsoleEditor);
       return;
     }
-    Object o = ((FileEditorManagerImpl) FileEditorManager.getInstance(getProject())).getData(key.getName(),
-                                                                                             myConsoleEditor,
-                                                                                             myFile.getVirtualFile());
-    sink.put(key, o);
+//    Object o = ((FileEditorManagerImpl) FileEditorManager.getInstance(getProject())).getData(key.getName(),
+//                                                                                             myConsoleEditor,
+//                                                                                             myFile.getVirtualFile());
+//    sink.put(key, o);
   }
 
   private void installEditorFactoryListener()
@@ -354,15 +354,15 @@ public class LanguageConsoleImpl implements Disposable, TypeSafeDataProvider
 
   protected void registerActionShortcuts(JComponent component)
   {
-    Iterable<AnAction> actionList =
-      (Iterable<AnAction>) myConsoleEditor.getComponent().getClientProperty(AnAction.ourClientProperty);
-    if (actionList != null)
-    {
-      for (AnAction anAction : actionList)
-      {
-        anAction.registerCustomShortcutSet(anAction.getShortcutSet(), component);
-      }
-    }
+//    Iterable<AnAction> actionList =
+//      (Iterable<AnAction>) myConsoleEditor.getComponent().getClientProperty(AnAction.ourClientProperty);
+//    if (actionList != null)
+//    {
+//      for (AnAction anAction : actionList)
+//      {
+//        anAction.registerCustomShortcutSet(anAction.getShortcutSet(), component);
+//      }
+//    }
   }
 
   public Editor getCurrentEditor()

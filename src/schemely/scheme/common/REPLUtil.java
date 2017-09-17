@@ -54,8 +54,10 @@ public class REPLUtil
 
     Sdk sdk = params.getJdk();
     assert sdk != null;
-    SdkType type = sdk.getSdkType();
-    String executablePath = ((JavaSdkType) type).getVMExecutablePath(sdk);
+//    SdkType type = sdk.getSdkType();
+//    String executablePath = ((JavaSdkType) type).getVMExecutablePath(sdk);
+
+    String executablePath = sdk.getHomePath() + "/bin";
 
     List<String> cmd = new ArrayList<String>();
     cmd.add(executablePath);

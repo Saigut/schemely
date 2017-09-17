@@ -1,6 +1,6 @@
 package schemely.lexer;
 
-import org.testng.annotations.DataProvider;
+//import org.testng.annotations.DataProvider;
 import schemely.TestUtil;
 import schemely.scheme.sisc.lexer.SISCLexer;
 import schemely.scheme.sisc.lexer.SISCTokens;
@@ -10,7 +10,7 @@ import schemely.scheme.sisc.lexer.SISCTokens;
  */
 public class SISCLexerTest extends LexerTestBase
 {
-  @DataProvider(name = "lexerTests")
+//  @DataProvider(name = "lexerTests")
   private static Object[][] lexerTestCases()
   {
     return TestUtil.testArray(testCase("#0=", SISCTokens.PTR_DEF),

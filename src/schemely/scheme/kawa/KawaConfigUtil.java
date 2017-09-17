@@ -62,7 +62,8 @@ public class KawaConfigUtil
 
   public static Library[] getAllKawaLibraries(@Nullable Project project)
   {
-    return ArrayUtil.mergeArrays(getGlobalKawaLibraries(), getProjectKawaLibraries(project), Library.class);
+//    return ArrayUtil.mergeArrays(getGlobalKawaLibraries(), getProjectKawaLibraries(project), Library.class);
+    return null;
   }
 
   public static Library[] getGlobalKawaLibraries()

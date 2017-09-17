@@ -21,7 +21,6 @@ public class SchemeFormatConfigurable extends CodeStyleAbstractConfigurable
     return new SchemeCodeStylePanel(settings);
   }
 
-  @Override
   public Icon getIcon()
   {
     return SchemeIcons.SCHEME_ICON;

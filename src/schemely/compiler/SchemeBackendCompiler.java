@@ -2,9 +2,9 @@ package schemely.compiler;
 
 import com.intellij.compiler.CompilerConfigurationImpl;
 import com.intellij.compiler.OutputParser;
-import com.intellij.compiler.impl.javaCompiler.ExternalCompiler;
-import com.intellij.compiler.impl.javaCompiler.ModuleChunk;
-import com.intellij.compiler.impl.javaCompiler.javac.JavacSettings;
+//import com.intellij.compiler.impl.javaCompiler.ExternalCompiler;
+//import com.intellij.compiler.impl.javaCompiler.ModuleChunk;
+//import com.intellij.compiler.impl.javaCompiler.javac.JavacSettings;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.compiler.CompileContext;
 import com.intellij.openapi.compiler.CompileScope;
@@ -43,6 +43,7 @@ import java.util.Set;
 /**
  * @author Colin Fleming
  */
+/*
 public class SchemeBackendCompiler extends ExternalCompiler
 {
   private static final Logger log = Logger.getLogger(SchemeBackendCompiler.class);
@@ -362,3 +363,4 @@ public class SchemeBackendCompiler extends ExternalCompiler
     return type instanceof JavaModuleType || "PLUGIN_MODULE".equals(type.getId());
   }
 }
+*/

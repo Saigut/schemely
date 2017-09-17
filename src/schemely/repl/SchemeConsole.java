@@ -104,7 +104,7 @@ public class SchemeConsole extends LanguageConsoleImpl
   private String addTextRangeToHistoryImpl(EditorEx fromEditor, TextRange textRange)
   {
     DocumentImpl history = (DocumentImpl) getHistoryViewer().getDocument();
-    MarkupModel markupModel = history.getMarkupModel(getProject());
+//    MarkupModel markupModel = history.getMarkupModel(getProject());
 
     int startLine = fromEditor.offsetToLogicalPosition(textRange.getStartOffset()).line;
     int endLine = fromEditor.offsetToLogicalPosition(textRange.getEndOffset()).line;
@@ -116,11 +116,11 @@ public class SchemeConsole extends LanguageConsoleImpl
     for (int line = startLine; line <= endLine; line++)
     {
       appendToHistoryDocument(history, prompt);
-      markupModel.addRangeHighlighter(history.getTextLength() - prompt.length(),
-                                      history.getTextLength(),
-                                      HighlighterLayer.SYNTAX,
-                                      ConsoleViewContentType.USER_INPUT.getAttributes(),
-                                      HighlighterTargetArea.EXACT_RANGE);
+//      markupModel.addRangeHighlighter(history.getTextLength() - prompt.length(),
+//                                      history.getTextLength(),
+//                                      HighlighterLayer.SYNTAX,
+//                                      ConsoleViewContentType.USER_INPUT.getAttributes(),
+//                                      HighlighterTargetArea.EXACT_RANGE);
 
       prompt = continuationPrompt;
 
@@ -149,16 +149,16 @@ public class SchemeConsole extends LanguageConsoleImpl
         {
           int start = Math.max(itStart, localStartOffset) - localStartOffset + offset;
           int end = Math.min(itEnd, localEndOffset) - localStartOffset + offset;
-          markupModel.addRangeHighlighter(start,
-                                          end,
-                                          HighlighterLayer.SYNTAX,
-                                          iterator.getTextAttributes(),
-                                          HighlighterTargetArea.EXACT_RANGE);
+//          markupModel.addRangeHighlighter(start,
+//                                          end,
+//                                          HighlighterLayer.SYNTAX,
+//                                          iterator.getTextAttributes(),
+//                                          HighlighterTargetArea.EXACT_RANGE);
         }
         iterator.advance();
       }
-      duplicateHighlighters(markupModel, fromDocument.getMarkupModel(getProject()), offset, lineRange);
-      duplicateHighlighters(markupModel, fromEditor.getMarkupModel(), offset, lineRange);
+//      duplicateHighlighters(markupModel, fromDocument.getMarkupModel(getProject()), offset, lineRange);
+//      duplicateHighlighters(markupModel, fromEditor.getMarkupModel(), offset, lineRange);
       appendToHistoryDocument(history, "\n");
     }
 

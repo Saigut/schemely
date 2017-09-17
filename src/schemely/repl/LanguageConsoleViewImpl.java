@@ -40,7 +40,6 @@ public class LanguageConsoleViewImpl extends ConsoleViewImpl {
     return myConsole;
   }
 
-  @Override
   protected EditorEx createRealEditor() {
     return myConsole.getHistoryViewer();
   }

@@ -43,7 +43,6 @@ public class SchemeConfigurable extends AbstractProjectComponent implements Conf
     return "Scheme";
   }
 
-  @Override
   public Icon getIcon()
   {
     return SchemeIcons.SCHEME_ICON;

@@ -50,8 +50,7 @@ public class SymbolResolveProcessor extends ResolveProcessor
     return name;
   }
 
-  @Override
-  public boolean shouldProcess(DeclaractionKind kind)
+  public boolean shouldProcess(DeclarationKind kind)
   {
     return true;
   }

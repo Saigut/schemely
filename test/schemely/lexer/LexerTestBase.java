@@ -1,7 +1,7 @@
 package schemely.lexer;
 
 import com.intellij.psi.tree.IElementType;
-import org.testng.annotations.Test;
+//import org.testng.annotations.Test;
 
 import java.util.Arrays;
 
@@ -15,7 +15,7 @@ public class LexerTestBase
     return new LexerTestCase(testData, types);
   }
 
-  @Test(dataProvider = "lexerTests", groups = "Schemely")
+//  @Test(dataProvider = "lexerTests", groups = "Schemely")
   public void testLexer(LexerTestCase testCase)
   {
     SchemeLexer lexer = getLexer();

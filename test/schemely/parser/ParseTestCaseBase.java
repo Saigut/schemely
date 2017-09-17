@@ -3,7 +3,7 @@ package schemely.parser;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import org.intellij.lang.annotations.Language;
-import org.testng.annotations.Test;
+//import org.testng.annotations.Test;
 import schemely.psi.impl.SchemeLiteral;
 import schemely.psi.impl.list.SchemeList;
 import schemely.psi.impl.symbols.SchemeIdentifier;
@@ -13,7 +13,7 @@ import schemely.psi.impl.symbols.SchemeIdentifier;
  */
 public class ParseTestCaseBase extends ParserTestBase
 {
-  @Test(dataProvider = "parseFiles", groups = "Schemely")
+//  @Test(dataProvider = "parseFiles", groups = "Schemely")
   public void parseTest(ParseTestCase testCase)
   {
     PsiFile psiFile = parse(testCase.contents);
@@ -25,13 +25,13 @@ public class ParseTestCaseBase extends ParserTestBase
     testCase.extraChecks(child);
   }
 
-  protected ParseTestCaseBase.ParseTestCase list(@Language("Scheme") String contents)
+  protected ParseTestCaseBase.ParseTestCase list(String contents)
   {
     return element(contents, SchemeList.class);
   }
 
 
-  protected ParseTestCaseBase.ParseTestCase improperList(@Language("Scheme") String contents)
+  protected ParseTestCaseBase.ParseTestCase improperList(String contents)
   {
     return new ParseTestCaseBase.ParseTestCase(contents, SchemeList.class)
     {
@@ -43,17 +43,17 @@ public class ParseTestCaseBase extends ParserTestBase
     };
   }
 
-  protected ParseTestCase literal(@Language("Scheme") String contents)
+  protected ParseTestCase literal(String contents)
   {
     return element(contents, SchemeLiteral.class);
   }
 
-  protected ParseTestCase identifier(@Language("Scheme") String contents)
+  protected ParseTestCase identifier(String contents)
   {
     return element(contents, SchemeIdentifier.class);
   }
 
-  protected <T extends PsiElement> ParseTestCase element(@Language("Scheme") String contents, Class<T> theClass)
+  protected <T extends PsiElement> ParseTestCase element(String contents, Class<T> theClass)
   {
     return new ParseTestCase(contents, theClass);
   }

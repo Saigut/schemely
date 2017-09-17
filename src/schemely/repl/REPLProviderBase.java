@@ -134,10 +134,10 @@ public abstract class REPLProviderBase implements REPLProvider
     SchemeConsole console = repl.getConsoleView().getConsole();
     EditorEx consoleEditor = console.getConsoleEditor();
 
-    Computable<Boolean> upComputable = AbstractConsoleRunnerWithHistory.createCanMoveUpComputable(consoleEditor);
-    actions.add(createConsoleHistoryAction(upComputable, console, true, KeyEvent.VK_UP));
-    Computable<Boolean> downComputable = AbstractConsoleRunnerWithHistory.createCanMoveDownComputable(consoleEditor);
-    actions.add(createConsoleHistoryAction(downComputable, console, false, KeyEvent.VK_DOWN));
+//    Computable<Boolean> upComputable = AbstractConsoleRunnerWithHistory.createCanMoveUpComputable(consoleEditor);
+//    actions.add(createConsoleHistoryAction(upComputable, console, true, KeyEvent.VK_UP));
+//    Computable<Boolean> downComputable = AbstractConsoleRunnerWithHistory.createCanMoveDownComputable(consoleEditor);
+//    actions.add(createConsoleHistoryAction(downComputable, console, false, KeyEvent.VK_DOWN));
 
     return actions.toArray(new AnAction[actions.size()]);
   }

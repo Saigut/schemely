@@ -6,8 +6,8 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileManager;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiManager;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+//import org.testng.annotations.DataProvider;
+//import org.testng.annotations.Test;
 import schemely.file.SchemeFileType;
 import schemely.psi.util.SchemePsiUtil;
 import schemely.scheme.sisc.SISCConfigUtil;
@@ -20,13 +20,13 @@ import java.util.List;
  */
 public class SISCParserTest extends ParserTestBase
 {
-  @Test(dataProvider = "siscFiles", groups = "Schemely")
+//  @Test(dataProvider = "siscFiles", groups = "Schemely")
   public void test(PsiFileWrapper wrapper)
   {
     assert !SchemePsiUtil.containsSyntaxErrors(wrapper.psiFile);
   }
 
-  @DataProvider(name = "siscFiles")
+//  @DataProvider(name = "siscFiles")
   private Object[][] getSISCFiles()
   {
     setUp();

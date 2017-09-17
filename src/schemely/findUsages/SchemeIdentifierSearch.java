@@ -3,7 +3,7 @@
  */
 package schemely.findUsages;
 
-import com.intellij.concurrency.JobUtil;
+//import com.intellij.concurrency.JobUtil;
 import com.intellij.ide.DataManager;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.actionSystem.DataKeys;
@@ -145,7 +145,8 @@ public class SchemeIdentifierSearch implements QueryExecutor<PsiReference, Refer
       {
         public Collection<PsiFile> compute()
         {
-          return Arrays.asList(manager.getCacheManager().getFilesWithWord(word, searchContext, scope, caseSensitively));
+//          return Arrays.asList(manager.getCacheManager().getFilesWithWord(word, searchContext, scope, caseSensitively));
+          return null;
         }
       });
 
@@ -160,7 +161,7 @@ public class SchemeIdentifierSearch implements QueryExecutor<PsiReference, Refer
 
       List<PsiFile> psiFiles = new ArrayList<PsiFile>(fileSet);
       final int size = psiFiles.size();
-      boolean completed = JobUtil.invokeConcurrentlyUnderProgress(psiFiles, new Processor<PsiFile>()
+      /*boolean completed = JobUtil.invokeConcurrentlyUnderProgress(psiFiles, new Processor<PsiFile>()
       {
         public boolean process(final PsiFile file)
         {
@@ -209,7 +210,9 @@ public class SchemeIdentifierSearch implements QueryExecutor<PsiReference, Refer
           });
           return !canceled.get();
         }
-      }, true, progress);
+      }, true, progress);*/
+
+      boolean completed = true;
 
       if (pceThrown.get())
       {

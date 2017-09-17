@@ -15,7 +15,8 @@ public class SchemeUtils
     {
       return false;
     }
-    ModuleType type = module.getModuleType();
-    return type instanceof JavaModuleType || "PLUGIN_MODULE".equals(type.getId());
+//    ModuleType type = module.getModuleType();
+//    return type instanceof JavaModuleType || "PLUGIN_MODULE".equals(type.getId());
+      return true;
   }
 }
