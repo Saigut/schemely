@@ -27,6 +27,8 @@
                     implementationClass="schemely.formatter.SchemeFormattingModelBuilder"/>
     <codeStyleSettingsProvider
       implementation="schemely.formatter.codeStyle.SchemeCodeStyleSettingsProvider"/>
+    <langCodeStyleSettingsProvider
+            implementation="schemely.formatter.codeStyle.SchemeLanguageCodeStyleSettingsProvider"/>
     <lang.findUsagesProvider language="Scheme"
                              implementationClass="schemely.findUsages.SchemeFindUsagesProvider"/>
     <referencesSearch implementation="schemely.findUsages.SchemeIdentifierSearch"/>
