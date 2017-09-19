@@ -19,7 +19,7 @@ public class SchemeFileType extends LanguageFileType
 
   public SchemeFileType()
   {
-    super(new SchemeLanguage());
+    super(SchemeLanguage.INSTANCE);
   }
 
   @NotNull

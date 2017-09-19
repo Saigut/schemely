@@ -4,10 +4,10 @@ import com.intellij.lang.Language;
 
 public class SchemeLanguage extends Language
 {
-  private static final String ID = "Scheme";
+  public static final SchemeLanguage INSTANCE = new SchemeLanguage();
 
   public SchemeLanguage()
   {
-    super(ID);
+    super("Scheme");
   }
 }
