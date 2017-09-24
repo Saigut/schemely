@@ -4,18 +4,11 @@ import com.intellij.application.options.IndentOptionsEditor;
 import com.intellij.application.options.SmartIndentOptionsEditor;
 import com.intellij.lang.Language;
 import com.intellij.psi.codeStyle.*;
-import com.intellij.ui.components.JBLabel;
 import org.jetbrains.annotations.NotNull;
 import schemely.SchemeLanguage;
 
-import javax.swing.*;
-
 
 public class SchemeLanguageCodeStyleSettingsProvider extends LanguageCodeStyleSettingsProvider {
-
-    public static final String ABSOLUTE = "Absolute";
-    public static final String RELATIVE = "Indent statements after label";
-    public static final String RELATIVE_REVERSED = "Indent labels";
 
     @NotNull
     @Override
