@@ -22,4 +22,16 @@ public class SchemeCodeStylePanel extends TabbedLanguageCodeStylePanel
       }
     }
   }
+
+  @Override
+  protected void addSpacesTab(CodeStyleSettings settings) {
+  }
+
+  @Override
+  protected void addBlankLinesTab(CodeStyleSettings settings) {
+  }
+
+  @Override
+  protected void addWrappingAndBracesTab(CodeStyleSettings settings) {
+  }
 }
