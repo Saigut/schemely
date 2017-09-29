@@ -114,6 +114,7 @@ public class SchemeSyntaxHighlighter extends SyntaxHighlighterBase implements To
     fillMap(ATTRIBUTES, LITERAL, Tokens.BOOLEAN_LITERAL);
     fillMap(ATTRIBUTES, CHAR, Tokens.CHAR_LITERAL);
     fillMap(ATTRIBUTES, SPECIAL, Tokens.SPECIAL);
+    fillMap(ATTRIBUTES, IDENTIFIER, Tokens.IDENTIFIER);
   }
 
   private static TextAttributes defaultFor(TextAttributesKey key)
