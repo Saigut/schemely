@@ -1,12 +1,14 @@
 package schemely.highlighter;
 
 import com.intellij.lexer.Lexer;
+import com.intellij.openapi.editor.DefaultLanguageHighlighterColors;
 import com.intellij.openapi.editor.HighlighterColors;
 import com.intellij.openapi.editor.SyntaxHighlighterColors;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.editor.markup.TextAttributes;
 import com.intellij.openapi.fileTypes.SyntaxHighlighterBase;
 import com.intellij.psi.tree.IElementType;
+import com.intellij.psi.tree.TokenSet;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import schemely.lexer.SchemeLexer;
@@ -20,7 +22,7 @@ import static com.intellij.openapi.editor.colors.TextAttributesKey.createTextAtt
 
 public class SchemeSyntaxHighlighter extends SyntaxHighlighterBase implements Tokens
 {
-  private static final Map<IElementType, TextAttributesKey> ATTRIBUTES = new HashMap<IElementType, TextAttributesKey>();
+  private static final Map<IElementType, TextAttributesKey[]> ATTRIBUTES = new HashMap<IElementType, TextAttributesKey[]>();
 
   @NotNull
   public Lexer getHighlightingLexer()
@@ -31,7 +33,13 @@ public class SchemeSyntaxHighlighter extends SyntaxHighlighterBase implements To
   @NotNull
   public TextAttributesKey[] getTokenHighlights(IElementType tokenType)
   {
-    return pack(ATTRIBUTES.get(tokenType));
+    TextAttributesKey[] Keys = ATTRIBUTES.get(tokenType);
+    if (null == Keys) {
+//      System.out.println("tokenType: " + tokenType.toString());
+      return EMPTY_KEYS;
+    } else {
+      return Keys;
+    }
   }
 
   @NonNls
@@ -66,6 +74,11 @@ public class SchemeSyntaxHighlighter extends SyntaxHighlighterBase implements To
   @NonNls
   static final String QUOTED_NUMBER_ID = "Quoted number";
 
+  @NonNls
+  static final String DOT_ID = "Dot";
+  @NonNls
+  static final String COMMA_ID = "Comma";
+
 
   // Registering TextAttributes
   static
@@ -85,6 +98,8 @@ public class SchemeSyntaxHighlighter extends SyntaxHighlighterBase implements To
     createTextAttributesKey(QUOTED_TEXT_ID, brighter(HighlighterColors.TEXT));
     createTextAttributesKey(QUOTED_STRING_ID, brighter(SyntaxHighlighterColors.STRING));
     createTextAttributesKey(QUOTED_NUMBER_ID, brighter(SyntaxHighlighterColors.NUMBER));
+    createTextAttributesKey(DOT_ID, brighter(SyntaxHighlighterColors.DOT));
+    createTextAttributesKey(COMMA_ID, brighter(SyntaxHighlighterColors.COMMA));
   }
 
   public static TextAttributesKey LINE_COMMENT = createTextAttributesKey(COMMENT_ID);
@@ -102,20 +117,58 @@ public class SchemeSyntaxHighlighter extends SyntaxHighlighterBase implements To
   public static TextAttributesKey QUOTED_TEXT = createTextAttributesKey(QUOTED_TEXT_ID);
   public static TextAttributesKey QUOTED_STRING = createTextAttributesKey(QUOTED_STRING_ID);
   public static TextAttributesKey QUOTED_NUMBER = createTextAttributesKey(QUOTED_NUMBER_ID);
+  public static TextAttributesKey DOT = createTextAttributesKey(DOT_ID);
+  public static TextAttributesKey COMMA = createTextAttributesKey(COMMA_ID);
+
+  public static TextAttributesKey[] LINE_COMMENT_KEYS = new TextAttributesKey[]{createTextAttributesKey(COMMENT_ID)};
+  public static TextAttributesKey[] BLOCK_COMMENT_KEYS = new TextAttributesKey[]{createTextAttributesKey(BLOCK_COMMENT_ID)};
+  public static TextAttributesKey[] IDENTIFIER_KEYS = new TextAttributesKey[]{createTextAttributesKey(IDENTIFIER_ID)};
+  public static TextAttributesKey[] NUMBER_KEYS = new TextAttributesKey[]{createTextAttributesKey(NUMBER_ID)};
+  public static TextAttributesKey[] STRING_KEYS = new TextAttributesKey[]{createTextAttributesKey(STRING_ID)};
+  public static TextAttributesKey[] BRACE_KEYS = new TextAttributesKey[]{createTextAttributesKey(BRACES_ID)};
+  public static TextAttributesKey[] PAREN_KEYS = new TextAttributesKey[]{createTextAttributesKey(PAREN_ID)};
+  public static TextAttributesKey[] LITERAL_KEYS = new TextAttributesKey[]{createTextAttributesKey(LITERAL_ID)};
+  public static TextAttributesKey[] CHAR_KEYS = new TextAttributesKey[]{createTextAttributesKey(CHAR_ID)};
+  public static TextAttributesKey[] BAD_CHARACTER_KEYS = new TextAttributesKey[]{createTextAttributesKey(BAD_CHARACTER_ID)};
+  public static TextAttributesKey[] KEYWORD_KEYS = new TextAttributesKey[]{createTextAttributesKey(KEYWORD_ID)};
+  public static TextAttributesKey[] SPECIAL_KEYS = new TextAttributesKey[]{createTextAttributesKey(SPECIAL_ID)};
+  public static TextAttributesKey[] QUOTED_TEXT_KEYS = new TextAttributesKey[]{createTextAttributesKey(QUOTED_TEXT_ID)};
+  public static TextAttributesKey[] QUOTED_STRING_KEYS = new TextAttributesKey[]{createTextAttributesKey(QUOTED_STRING_ID)};
+  public static TextAttributesKey[] QUOTED_NUMBER_KEYS = new TextAttributesKey[]{createTextAttributesKey(QUOTED_NUMBER_ID)};
+  public static TextAttributesKey[] DOT_KEYS = new TextAttributesKey[]{createTextAttributesKey(DOT_ID)};
+  public static TextAttributesKey[] COMMA_KEYS = new TextAttributesKey[]{createTextAttributesKey(COMMA_ID)};
+  public static TextAttributesKey[] EMPTY_KEYS = new TextAttributesKey[0];
 
   static
   {
-    fillMap(ATTRIBUTES, LINE_COMMENT, Tokens.COMMENT);
-    fillMap(ATTRIBUTES, BLOCK_COMMENT, Tokens.BLOCK_COMMENT);
-    fillMap(ATTRIBUTES, NUMBER, NUMBER_LITERAL);
-    fillMap(ATTRIBUTES, Tokens.STRINGS, STRING);
-    fillMap(ATTRIBUTES, BRACE, Tokens.LEFT_SQUARE, Tokens.RIGHT_SQUARE, Tokens.LEFT_CURLY, Tokens.RIGHT_CURLY);
-    fillMap(ATTRIBUTES, PAREN, Tokens.LEFT_PAREN, Tokens.RIGHT_PAREN);
-    fillMap(ATTRIBUTES, LITERAL, Tokens.BOOLEAN_LITERAL);
-    fillMap(ATTRIBUTES, CHAR, Tokens.CHAR_LITERAL);
-    fillMap(ATTRIBUTES, SPECIAL, Tokens.SPECIAL);
-    fillMap(ATTRIBUTES, IDENTIFIER, Tokens.IDENTIFIER);
+    newFillMap(ATTRIBUTES, LINE_COMMENT_KEYS, Tokens.COMMENT);
+    newFillMap(ATTRIBUTES, BLOCK_COMMENT_KEYS, Tokens.BLOCK_COMMENT);
+    newFillMap(ATTRIBUTES, NUMBER_KEYS, NUMBER_LITERAL);
+    newFillMap(ATTRIBUTES, STRING_KEYS, Tokens.STRINGS);
+    newFillMap(ATTRIBUTES, BRACE_KEYS, Tokens.LEFT_SQUARE, Tokens.RIGHT_SQUARE, Tokens.LEFT_CURLY, Tokens.RIGHT_CURLY);
+    newFillMap(ATTRIBUTES, PAREN_KEYS, Tokens.LEFT_PAREN, Tokens.RIGHT_PAREN);
+    newFillMap(ATTRIBUTES, LITERAL_KEYS, Tokens.BOOLEAN_LITERAL);
+    newFillMap(ATTRIBUTES, CHAR_KEYS, Tokens.CHAR_LITERAL);
+    newFillMap(ATTRIBUTES, SPECIAL_KEYS, Tokens.SPECIAL);
+    newFillMap(ATTRIBUTES, IDENTIFIER_KEYS, Tokens.IDENTIFIERS);
+    newFillMap(ATTRIBUTES, DOT_KEYS, Tokens.DOT);
+    newFillMap(ATTRIBUTES, COMMA_KEYS, Tokens.COMMA, Tokens.COMMA_AT);
   }
+
+  protected static void newFillMap(@NotNull Map<IElementType, TextAttributesKey[]> map, TextAttributesKey[] value, @NotNull TokenSet keys) {
+    newFillMap(map, value, keys.getTypes());
+  }
+
+  protected static void newFillMap(@NotNull Map<IElementType, TextAttributesKey[]> map, TextAttributesKey[] value, @NotNull IElementType... types) {
+    IElementType[] var3 = types;
+    int var4 = types.length;
+
+    for(int var5 = 0; var5 < var4; ++var5) {
+      IElementType type = var3[var5];
+      map.put(type, value);
+    }
+  }
+
 
   private static TextAttributes defaultFor(TextAttributesKey key)
   {
