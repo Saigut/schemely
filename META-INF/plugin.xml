@@ -31,7 +31,7 @@
             implementation="schemely.formatter.codeStyle.SchemeLanguageCodeStyleSettingsProvider"/>
     <lang.findUsagesProvider language="Scheme"
                              implementationClass="schemely.findUsages.SchemeFindUsagesProvider"/>
-    <referencesSearch implementation="schemely.findUsages.SchemeIdentifierSearch"/>
+    <!--<referencesSearch implementation="schemely.findUsages.SchemeIdentifierSearch"/>-->
 
     <lang.namesValidator language="Scheme"
                          implementationClass="schemely.utils.SchemeNamesValidator"/>
