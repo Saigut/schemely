@@ -50,6 +50,10 @@ public class SchemeParser implements PsiParser, Tokens
     {
       parseLiteral(builder);
     }
+    else if (KEYWORD == token)
+    {
+      parseKeyword(builder);
+    }
     else if (IDENTIFIER == token)
     {
       parseIdentifier(builder);
@@ -140,6 +144,13 @@ public class SchemeParser implements PsiParser, Tokens
     // TODO fix this
     builder.advanceLexer();
     marker.done(AST.IDENTIFIER);
+  }
+
+  private void parseKeyword(PsiBuilder builder)
+  {
+    PsiBuilder.Marker marker = builder.mark();
+    builder.advanceLexer();
+    marker.done(AST.KEYWORD);
   }
 
   /**

@@ -34,10 +34,12 @@ public interface Tokens
   IElementType NUMBER_LITERAL = new SchemeElementType("number literal");
   IElementType CHAR_LITERAL = new SchemeElementType("character literal");
   IElementType BOOLEAN_LITERAL = new SchemeElementType("boolean literal");
+  IElementType PLAIN_LITERAL = new SchemeElementType("plain literal");
 
-  TokenSet LITERALS = TokenSet.create(STRING_LITERAL, NUMBER_LITERAL, CHAR_LITERAL, BOOLEAN_LITERAL);
+  TokenSet LITERALS = TokenSet.create(STRING_LITERAL, NUMBER_LITERAL, CHAR_LITERAL, BOOLEAN_LITERAL, PLAIN_LITERAL);
 
   IElementType IDENTIFIER = new SchemeElementType("identifier");
+  IElementType KEYWORD = new SchemeElementType("keyword");
 
   IElementType DOT = new SchemeElementType(".");
 

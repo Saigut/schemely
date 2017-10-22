@@ -35,6 +35,11 @@ public class DefaultPsiCreator implements SchemePsiCreator
     {
       return new SchemeIdentifier(node);
     }
+    if (elementType == AST.KEYWORD)
+    {
+      /// fixme   SchemeIdentifier() has low efficiency
+      return new SchemeLiteral(node);
+    }
     if (elementType == AST.SPECIAL)
     {
       return new SchemeIdentifier(node);
