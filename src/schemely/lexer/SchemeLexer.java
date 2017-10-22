@@ -61,8 +61,10 @@ public class SchemeLexer extends LexerBase
           .map((a) -> (org.jparsec.Tokens.fragment(a, Tag.S_OPERATOR)));
 
   // Numbers
+  Pattern PT_RIGHT_INTEGER = Patterns.sequence(Patterns.among("+-").optional(), Patterns.INTEGER);
+  Parser<String> PS_RIGHT_INTEGER = PT_RIGHT_INTEGER.toScanner("integer").source();
   Parser<?> s_numbers = Parsers.or(
-          Scanners.INTEGER,
+          PS_RIGHT_INTEGER,
           Scanners.DECIMAL,
           Scanners.DEC_INTEGER, Scanners.OCT_INTEGER,
           Scanners.HEX_INTEGER,
