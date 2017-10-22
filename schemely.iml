@@ -52,6 +52,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="jparsec-3.1-SNAPSHOT-sources" level="project" />
   </component>
 </module>
-
