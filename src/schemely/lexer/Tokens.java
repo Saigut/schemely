@@ -8,6 +8,7 @@ import schemely.parser.SchemeElementType;
 public interface Tokens
 {
   // Special characters
+  IElementType SHARP = new SchemeElementType("#");
   IElementType OPEN_VECTOR = new SchemeElementType("#(");
   IElementType LEFT_PAREN = new SchemeElementType("(");
   IElementType RIGHT_PAREN = new SchemeElementType(")");

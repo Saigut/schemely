@@ -54,7 +54,7 @@ public class SchemeLexer extends LexerBase
           .map((a) -> (org.jparsec.Tokens.fragment("WHITE_SPACE", Tag.S_WHITE_SPACE)));
 
   // Operators
-  Pattern PT_OPERATORS = Patterns.among("()[]'`,;\\");
+  Pattern PT_OPERATORS = Patterns.among("()[]'`,#\\");
   Parser<String> PS_OPERATORS = PT_OPERATORS.toScanner("operator").source();
 
   Parser<?> s_operators = PS_OPERATORS
@@ -75,7 +75,7 @@ public class SchemeLexer extends LexerBase
   Pattern literal_valid = Patterns
           .or(Patterns.isChar(CharPredicates.IS_LETTER),
                   Patterns.isChar(CharPredicates.IS_DIGIT),
-                  Patterns.among("!@#$%^&*-+_=:|/?<>."));
+                  Patterns.among("!@$%^&*-+_=:|/?<>."));
   Pattern P_LITERAL = literal_valid.many1();
   Parser<String> LITERAL = P_LITERAL.toScanner("literal").source();
 
@@ -216,6 +216,9 @@ public class SchemeLexer extends LexerBase
 
         } else if (opStr.equals(",")) {
           type = Tokens.COMMA;
+
+        } else if (opStr.equals("#")) {
+          type = Tokens.SHARP;
 
         } /*else if (opStr.equals(";")) {
           type = Tokens.OP_SEMI;

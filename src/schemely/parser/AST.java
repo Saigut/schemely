@@ -18,7 +18,8 @@ public interface AST extends Tokens
   final IElementType KEYWORD = new SchemeElementType("keyword");
   final IElementType SPECIAL = new SchemeElementType("special");
 
-  final IElementType QUOTED = new SchemeElementType("abbreviation");
+  final IElementType QUOTED = new SchemeElementType("quoted");
+  final IElementType BACKQUOTED = new SchemeElementType("backquoted");
 
   TokenSet LIST_LIKE_FORMS = TokenSet.create(LIST, VECTOR);
 
